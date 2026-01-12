@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('machine_number')->unique();
             $table->date('licence_end')->nullable();
             $table->boolean('status')->default(true);
-            $table->string('remaining_days')->nullable();
             $table->timestamps();
         });
     }

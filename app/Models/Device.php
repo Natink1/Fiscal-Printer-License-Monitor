@@ -19,4 +19,23 @@ class Device extends Model
         'status' => 'boolean',
         'licence_end' => 'date',
     ];
+
+    protected $appends = ['remaining_days'];
+
+    public function getRemainingDaysAttribute(): ?int
+    {
+        if ($this->licence_end) {
+            $today = now()->startOfDay();
+            $endDate = $this->licence_end->startOfDay();
+
+            return $today->diffInDays($endDate, false);
+        }
+
+        return null;
+    }
+
+    public function getIsExpiredAttribute(): bool
+    {
+        return $this->licence_end ? $this->remaining_days < 0 : false;
+    }
 }

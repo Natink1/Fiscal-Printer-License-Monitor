@@ -2,12 +2,13 @@
 
 namespace App\Filament\Resources\Devices\Tables;
 
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
+use Filament\Tables\Table;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
 
 class DevicesTable
 {
@@ -15,9 +16,6 @@ class DevicesTable
     {
         return $table
             ->columns([
-                TextColumn::make('id')
-                    ->label('ID')
-                    ->searchable(),
                 TextColumn::make('name')
                     ->searchable(),
                 TextColumn::make('machine_number')
@@ -25,10 +23,16 @@ class DevicesTable
                 TextColumn::make('licence_end')
                     ->date()
                     ->sortable(),
-                TextColumn::make('status')
-                    ->searchable(),
+                IconColumn::make('status')
+                    ->boolean()
+                    ->label('Active'),
                 TextColumn::make('remaining_days')
-                    ->searchable(),
+                    ->label('Remaining Days')
+                    ->sortable()
+                    ->badge()
+                    ->color(fn($state) => $state === null ? 'gray' : ($state < 0 ? 'danger' : ($state <= 7 ? 'warning' : 'success')))
+                    ->formatStateUsing(fn($state) => $state === null ? 'N/A' : ($state < 0 ? "Expired (" . abs($state) . "d)" : "{$state} days")),
+
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -37,7 +41,7 @@ class DevicesTable
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-            ])
+            ])->defaultSort('licence_end', 'asc')
             ->filters([
                 //
             ])

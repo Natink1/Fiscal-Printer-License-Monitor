@@ -18,11 +18,10 @@ class DeviceForm
                     ->required(),
                 TextInput::make('machine_number')
                     ->required(),
-                DatePicker::make('licence_end'),
+                DatePicker::make('licence_end')->label('License End Date'),
                 Toggle::make('status')->default(true)
-                ->onIcon('heroicon-o-check-circle')
+                    ->onIcon('heroicon-o-check-circle')
                     ->offIcon('heroicon-o-x-circle'),
-                TextInput::make('remaining_days'),
             ]);
     }
 }
