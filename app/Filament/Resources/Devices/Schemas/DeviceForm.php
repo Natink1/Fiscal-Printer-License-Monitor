@@ -4,6 +4,8 @@ namespace App\Filament\Resources\Devices\Schemas;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\ToggleButtons;
 use Filament\Schemas\Schema;
 
 class DeviceForm
@@ -17,9 +19,9 @@ class DeviceForm
                 TextInput::make('machine_number')
                     ->required(),
                 DatePicker::make('licence_end'),
-                TextInput::make('status')
-                    ->required()
-                    ->default('active'),
+                Toggle::make('status')->default(true)
+                ->onIcon('heroicon-o-check-circle')
+                    ->offIcon('heroicon-o-x-circle'),
                 TextInput::make('remaining_days'),
             ]);
     }
