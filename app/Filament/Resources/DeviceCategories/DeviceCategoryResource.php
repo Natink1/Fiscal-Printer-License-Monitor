@@ -20,7 +20,7 @@ class DeviceCategoryResource extends Resource
 {
     protected static ?string $model = DeviceCategory::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedFolderMinus;
 
     protected static ?string $recordTitleAttribute = 'Device Category';
 
