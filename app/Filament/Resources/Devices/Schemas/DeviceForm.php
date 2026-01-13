@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Devices\Schemas;
 
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\ToggleButtons;
@@ -18,7 +19,16 @@ class DeviceForm
                     ->required(),
                 TextInput::make('machine_number')
                     ->required(),
-                DatePicker::make('licence_end')->label('License End Date'),
+                DatePicker::make('licence_end')->label('License End Date')->required(),
+
+
+                Select::make('device_category_id')
+                    ->label('Device Category')
+                    ->relationship('category', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->nullable(),
+
                 Toggle::make('status')->default(true)
                     ->onIcon('heroicon-o-check-circle')
                     ->offIcon('heroicon-o-x-circle'),

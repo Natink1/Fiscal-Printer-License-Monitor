@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Filament\Resources\DeviceCategories\Pages;
+
+use App\Filament\Resources\DeviceCategories\DeviceCategoryResource;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\ViewAction;
+use Filament\Resources\Pages\EditRecord;
+
+class EditDeviceCategory extends EditRecord
+{
+    protected static string $resource = DeviceCategoryResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            ViewAction::make(),
+            DeleteAction::make(),
+        ];
+    }
+}

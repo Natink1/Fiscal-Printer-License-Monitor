@@ -23,6 +23,11 @@ class Device extends Model
 
     protected $appends = ['remaining_days'];
 
+    public function category()
+    {
+        return $this->belongsTo(DeviceCategory::class, 'device_category_id');
+    }
+
     public function getRemainingDaysAttribute(): ?int
     {
         if (!$this->licence_end) return null;

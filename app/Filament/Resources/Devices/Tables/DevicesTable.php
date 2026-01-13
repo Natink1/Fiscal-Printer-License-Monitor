@@ -20,6 +20,10 @@ class DevicesTable
                     ->searchable(),
                 TextColumn::make('machine_number')
                     ->searchable(),
+                TextColumn::make('category.name')
+                    ->label('Device Category')
+                    ->sortable()
+                    ->searchable(),
                 TextColumn::make('licence_end')
                     ->date()
                     ->sortable(),
