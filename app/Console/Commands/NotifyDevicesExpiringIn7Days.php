@@ -14,7 +14,7 @@ class NotifyDevicesExpiringIn7Days extends Command
 
     public function handle(): int
     {
-        $chatId = env('TELEGRAM_CHAT_ID'); // put your -100... id in .env
+        $chatId = env('TELEGRAM_CHAT_ID');
 
         $devices = Device::query()
             ->where('status', true)
