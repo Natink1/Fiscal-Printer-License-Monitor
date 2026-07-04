@@ -16,6 +16,9 @@ class DeviceInfolist
                 TextEntry::make('licence_end')
                     ->date()
                     ->placeholder('-'),
+                TextEntry::make('service_end_date')
+                    ->date()
+                    ->placeholder('-'),
                 TextEntry::make('status'),
                 TextEntry::make('created_at')
                     ->dateTime()

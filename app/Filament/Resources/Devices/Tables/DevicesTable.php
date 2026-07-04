@@ -30,6 +30,9 @@ class DevicesTable
                 TextColumn::make('licence_end')
                     ->date()
                     ->sortable(),
+                TextColumn::make('service_end_date')
+                    ->date()
+                    ->sortable(),
                 IconColumn::make('status')
                     ->boolean()
                     ->label('Active'),

@@ -20,7 +20,7 @@ class DeviceForm
                 TextInput::make('machine_number')
                     ->required(),
                 DatePicker::make('licence_end')->label('License End Date')->required(),
-
+                DatePicker::make('service_end_date')->label('Service End Date')->required(),
 
                 Select::make('device_category_id')
                     ->label('Device Category')
