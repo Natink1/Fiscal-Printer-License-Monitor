@@ -18,6 +18,15 @@ class ListDevices extends ListRecords
 {
     protected static string $resource = DeviceResource::class;
 
+    public function mount(): void
+    {
+        parent::mount();
+
+        if ($categoryId = request()->query('category_id')) {
+            $this->tableFilters['category_id']['value'] = $categoryId;
+        }
+    }
+
     protected function getHeaderActions(): array
     {
         return [

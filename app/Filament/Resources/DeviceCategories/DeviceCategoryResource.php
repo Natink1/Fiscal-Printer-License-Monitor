@@ -18,6 +18,9 @@ use Filament\Tables\Table;
 
 class DeviceCategoryResource extends Resource
 {
+
+
+
     protected static ?string $model = DeviceCategory::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedFolderMinus;
