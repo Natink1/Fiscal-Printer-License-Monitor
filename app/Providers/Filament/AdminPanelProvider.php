@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Resources\Companies\CompanyResource;
 use App\Filament\Resources\DeviceCategories\DeviceCategoryResource;
 use App\Filament\Resources\Devices\DeviceResource;
 use App\Models\DeviceCategory;
@@ -76,6 +77,14 @@ class AdminPanelProvider extends PanelProvider
                             request()->routeIs('filament.admin.resources.device-categories.*')
                         ),
 
+                    NavigationItem::make('company')
+                        ->label('Companies')
+                        ->icon('heroicon-o-building-office')
+                        ->url(fn(): string => CompanyResource::getUrl('index'))
+                        ->isActiveWhen(
+                            fn(): bool =>
+                            request()->routeIs('filament.admin.resources.companies.*')
+                        ),
                     NavigationItem::make('devices-menu')
                         ->label('Devices')
                         ->icon('heroicon-o-computer-desktop')
