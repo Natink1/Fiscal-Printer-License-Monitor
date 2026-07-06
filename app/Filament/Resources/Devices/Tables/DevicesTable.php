@@ -29,7 +29,8 @@ class DevicesTable
                     ->searchable(),
                 TextColumn::make('licence_end')
                     ->date()
-                    ->sortable(),
+                    ->sortable()
+                    ->color('info'),
                 TextColumn::make('service_end_date')
                     ->date()
                     ->sortable(),
