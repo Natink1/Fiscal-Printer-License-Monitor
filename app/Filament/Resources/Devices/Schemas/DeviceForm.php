@@ -28,6 +28,12 @@ class DeviceForm
                     ->searchable()
                     ->preload()
                     ->nullable(),
+                Select::make('company_id')
+                    ->label('Company')
+                    ->relationship('company', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->nullable(),
 
                 Toggle::make('status')->default(true)
                     ->onIcon('heroicon-o-check-circle')
